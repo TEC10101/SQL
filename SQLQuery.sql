@@ -11,15 +11,15 @@ GO
 USE libMgmt
 GO
 
-
+--DROP TABLE BOOK
 CREATE TABLE BOOK --must be 20
 	(
 	bookId int IDENTITY(1,1) PRIMARY KEY,
 	bookTitle varchar(30) NOT NULL,
-	bookPublisher varchar(50) NOT NULL,
-	bookAuthorId int NOT NULL
+	bookPublisher varchar(50) NOT NULL/*,
+	bookAuthorId int NOT NULL*/
 	)
-GO
+GO --SELECT * FROM BOOK
 
 
 
@@ -59,7 +59,7 @@ GO
 --DROP TABLE BOOK_AUTHORS
 CREATE TABLE BOOK_AUTHORS --10 authors, stephen king
 	(
-	authorId int IDENTITY(1,1) PRIMARY KEY,
+	bookId int PRIMARY KEY,
 	bookAuthor varchar(50) NOT NULL
 	)
 GO
@@ -69,7 +69,7 @@ GO
 --DROP TABLE BOOK_COPIES
 CREATE TABLE BOOK_COPIES --10 books in each, and at least 2x copies
 	(
-	bookId int IDENTITY(1,1) FOREIGN KEY REFERENCES BOOK(bookId),
+	bookId int IDENTITY(1,1) PRIMARY KEY,
 	branchId int NULL,
 	noOfCopies int NOT NULL
 	)
@@ -77,7 +77,7 @@ GO --SELECT * FROM BOOK_COPIES
 
 
 
-
+--DROP TABLE BOOKS_LOANS
 CREATE TABLE BOOK_LOANS --50 loans, 2 borrowers with >5 loans
 	(
 	bookId int FOREIGN KEY REFERENCES BOOK(bookid),
@@ -129,16 +129,26 @@ GO
 
 INSERT INTO BOOK_AUTHORS
 VALUES
-	('auth1'),
-	('auth2'),
-	('auth3'),
-	('auth4'),
-	('auth5'),
-	('auth6'),
-	('auth7'),
-	('auth8'),
-	('auth9'),
-	('Stephen King')
+	(1,'auth1'),
+	(2,'auth2'),
+	(3,'auth3'),
+	(4,'auth4'),
+	(5,'auth5'),
+	(6,'auth6'),
+	(7,'auth7'),
+	(8,'auth8'),
+	(9,'auth9'),
+	(10,'Stephen King'),
+	(11,'auth1'),
+	(12,'auth2'),
+	(13,'auth3'),
+	(14,'auth4'),
+	(15,'auth5'),
+	(16,'auth6'),
+	(17,'auth7'),
+	(18,'auth8'),
+	(19,'auth9'),
+	(20,'Stephen King')
 GO--SELECT * FROM BOOK_AUTHORS
 
 INSERT INTO BOOK_LOANS
