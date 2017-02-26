@@ -68,6 +68,7 @@ CREATE TABLE LIBRARY_BRANCH --4 branches, sharpstown & central
 	[address] varchar(60) NOT NULL
 	)
 GO
+
 INSERT INTO [dbo].[LIBRARY_BRANCH]
 VALUES
 	('sharpstown','4 five street'),
